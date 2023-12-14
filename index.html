@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div class="modal" id="modal" hidden>
+      <div class="modal-content">
+        <h3>The VirtuRob DOM</h3>
+        <p>
+          The VirtuRob Dom is a Lisp/Scheme-like way of describing the structure
+          of a virtual document object model. A VirtuRob dom is{" "}
+          <span class="tt">TERM_LIST</span> defined as follows:
+        </p>
+        <pre>{BNF}</pre>
+        <p>
+          A <span class="tt">STRING_LITERAL</span> is two quote marks
+          <span class="tt">"</span>
+          surrounding alphanumeric characters, spaces, basic punctuation, and
+          top-row-of-keyboard symbols.
+        </p>
+
+        <h3>Why does this look like Scheme?</h3>
+        <p>
+          Not an endorsement of Scheme or anything, but I wanted to have a
+          parser as part of the project, and Lisp-like parenthesis-ful languages
+          are rather easy to write parsers for. Check out
+          <a href="">the parser</a> and you can see the couple of dozen lines
+          that make up the
+          <a href="https://en.wikipedia.org/wiki/Recursive_descent_parser">
+            recursive descent parser
+          </a>
+          that turns text into the data structure of a VirtuRob DOM tree.
+        </p>
+        <button id="modal-close-button">Close</button>
+      </div>
+    </div>
+
+    <main>
+      <div class="next-in-dom">
+        <h3>
+          New VirtuRob DOM
+          <button id="open-view-grammar-button">View Grammar</button>
+          <textarea id="next-in-dom-text-area">
+(div 
+(unordered_list 
+  (list_item "abc")
+  (list_item "def")
+  (list_item (div "xyz"))) 
+"whatever 1" 
+(div "whatever 2") 
+(paragraph "whatever 3"))
+          </textarea>
+        </h3>
+      </div>
+      <div></div>
+      <div class="currently-rendered">
+        <h3>Current DOM ZONE contents as a VirtuRob DOM</h3>
+        <textarea disabled id="current-in-dom-text-area"></textarea>
+      </div>
+      <div class="instructions">
+        <h3 hidden id="instructions-header">
+          Instructions for updating THE DOM ZONE
+        </h3>
+        <button hidden id="instructions-button">Run These Instructions</button>
+        <pre hidden id="instructions-javascript" hidden></pre>
+        <div hidden id="parse-error-message" hidden></div>
+      </div>
+      <div></div>
+      <div>
+        <h3>THE DOM ZONE</h3>
+        <div id="dom-zone-root"></div>
+      </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
