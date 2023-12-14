@@ -33,6 +33,7 @@ instructionsButton.onclick = updateDom;
 openViewGrammarButton.onclick = () => viewModal(true);
 modalCloseButton.onclick = () => viewModal(false);
 modal.onclick = () => viewModal(false);
+currentInDomTextArea.value = "";
 
 let parseResult: {
   text: string;
