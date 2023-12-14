@@ -12,10 +12,18 @@
         <h3>The VirtuRob DOM</h3>
         <p>
           The VirtuRob Dom is a Lisp/Scheme-like way of describing the structure
-          of a virtual document object model. A VirtuRob dom is{" "}
+          of a virtual document object model. A VirtuRob dom is
           <span class="tt">TERM_LIST</span> defined as follows:
         </p>
-        <pre>{BNF}</pre>
+        <pre>
+TERM_LIST ::=
+          |  TERM TERM_LIST
+
+TERM      ::= STRING_LITERAL
+          |  "(" TYPE TERM_LIST ")"
+          
+TYPE      ::= "div" | "unordered_list" | "list_item" | "paragraph"
+        </pre>
         <p>
           A <span class="tt">STRING_LITERAL</span> is two quote marks
           <span class="tt">"</span>
@@ -28,8 +36,11 @@
           Not an endorsement of Scheme or anything, but I wanted to have a
           parser as part of the project, and Lisp-like parenthesis-ful languages
           are rather easy to write parsers for. Check out
-          <a href="">the parser</a> and you can see the couple of dozen lines
-          that make up the
+          <a
+            href="https://github.com/robsimmons/virtu-rob-dom/blob/main/src/parser-parens.ts"
+            >the source code</a
+          >
+          and you can see the couple of dozen lines that make up the
           <a href="https://en.wikipedia.org/wiki/Recursive_descent_parser">
             recursive descent parser
           </a>
